@@ -23,7 +23,7 @@ pipeline {
        sh "docker rm -f frontend backend"
       }
     } 
-    stage {
+    stage('Adjust version') {
       steps {
         script {
           backendDockerTag = params.backendDockerTag.isEmpty() ? "latest" : params.backendDockerTag
