@@ -30,4 +30,4 @@ class AppTest(unittest.TestCase):
         driver.quit()
  
 if __name__ == "__main__":
-    unittest.main(
+    unittest.main()
