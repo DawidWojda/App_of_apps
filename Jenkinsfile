@@ -55,7 +55,7 @@ pipeline {
         stage('Selenium tests') {
             steps {
                 sh "pip3 install -r test/selenium/requirements.txt"
-                sh "python3 -m pytest test/selenium/frontendtest.py"
+                sh "python3 -m pytest test/selenium/frontend_test.py"
             }
         }
         stage('Run terraform') {
@@ -72,7 +72,7 @@ pipeline {
                 steps {
                     script {
                         sh "ansible-galaxy install -r requirements.yml"
-                    withEnv(["FRONTEND_IMAGE=$frontendImage:$frontendDockerTag", 
+	                    withEnv(["FRONTEND_IMAGE=$frontendImage:$frontendDockerTag", 
                                 "BACKEND_IMAGE=$backendImage:$backendDockerTag"]) {
                         ansiblePlaybook inventory: 'inventory', playbook: 'playbook.yml'
                     }
