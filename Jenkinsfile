@@ -14,10 +14,10 @@ pipeline {
         terraform 'Terraform'
     }
 
-// parameters {
-//   string(description: 'backend docker image tag', name: 'backendDockerTag' defaultValue: '')
-//   string(description: 'frontend docker image tag', name: 'frontendDockerTag' defaultValue: '')
-// }
+ parameters {
+   string(description: 'backend docker image tag', name: 'backendDockerTag' defaultValue: '')
+   string(description: 'frontend docker image tag', name: 'frontendDockerTag' defaultValue: '')
+ }
 
     stages {
         stage('Get Code') {
