@@ -11,13 +11,13 @@ pipeline {
         label 'agent'
     }
     tools {
-        terraform 'Terraform'
+        terraform 'terraform'
     }
 
-//  parameters {
+// parameters {
 //   string(description: 'backend docker image tag', name: 'backendDockerTag' defaultValue: '')
 //   string(description: 'frontend docker image tag', name: 'frontendDockerTag' defaultValue: '')
-//  }
+// }
 
     stages {
         stage('Get Code') {
@@ -72,7 +72,7 @@ pipeline {
                 steps {
                     script {
                         sh "ansible-galaxy install -r requirements.yml"
-	                    withEnv(["FRONTEND_IMAGE=$frontendImage:$frontendDockerTag", 
+                    withEnv(["FRONTEND_IMAGE=$frontendImage:$frontendDockerTag", 
                                 "BACKEND_IMAGE=$backendImage:$backendDockerTag"]) {
                         ansiblePlaybook inventory: 'inventory', playbook: 'playbook.yml'
                     }
